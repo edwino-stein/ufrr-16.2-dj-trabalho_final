@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1ab8086e2ff314a819d8d6a6b7c548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1398912922}
   moviment: 1
   speed: 1
   borderWidth: 5
@@ -409,6 +410,10 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1398912922 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2dea7d718062a9a4dae72d5e413c8c2d, type: 3}
+  m_PrefabInternal: {fileID: 1735373893}
 --- !u!1001 &1735373893
 Prefab:
   m_ObjectHideFlags: 0
@@ -463,6 +468,10 @@ Prefab:
     - target: {fileID: 2300000, guid: 2dea7d718062a9a4dae72d5e413c8c2d, type: 3}
       propertyPath: m_CastShadows
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2dea7d718062a9a4dae72d5e413c8c2d, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2dea7d718062a9a4dae72d5e413c8c2d, type: 3}
