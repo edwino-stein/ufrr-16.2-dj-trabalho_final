@@ -13,10 +13,14 @@ public class Cannon : MonoBehaviour {
 	}
 
 	IEnumerator shoot(){
-		while(this.allowShoot){
-			GameObject p = Instantiate(this.projectile);
-			p.transform.position = this.transform.position;
-			yield return new WaitForSeconds(this.timer);
+		while(true){
+			
+			if (this.allowShoot) {
+				GameObject p = Instantiate (this.projectile);
+				p.transform.position = this.transform.position;
+			}
+
+			yield return new WaitForSeconds (this.timer);
 		}
 	}
 }
