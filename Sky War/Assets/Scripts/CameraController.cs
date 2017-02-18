@@ -11,6 +11,9 @@ public class CameraController : MonoBehaviour {
 
 	public float borderWidth = 2f;
 	public GameObject border;
+	public GameObject starterBorder;
+	public GameObject destroyerBorder;
+
 	protected GameObject rightBorder;
 	protected GameObject leftBorder;
 	protected GameObject bottomBorder;
@@ -38,11 +41,18 @@ public class CameraController : MonoBehaviour {
 		this.bottomBorder.transform.localScale = new Vector3(width, this.borderWidth, this.borderWidth);
 		this.bottomBorder.transform.SetParent(this.transform);
 
-
 		this.border.transform.position = new Vector3 (0, 0, y + padding); 
 		this.border.name = "topBorder";
 		this.border.transform.localScale = new Vector3(width, this.borderWidth, this.borderWidth);
 		this.border.transform.SetParent(this.transform);
+
+		this.starterBorder.transform.position = new Vector3 (0, 0, y + padding*10); 
+		this.starterBorder.transform.localScale = new Vector3(width * 1.5f, this.borderWidth * 10, this.borderWidth);
+		this.starterBorder.transform.SetParent(this.transform);
+
+		this.destroyerBorder.transform.position = new Vector3 (0, 0, - y - padding*10); 
+		this.destroyerBorder.transform.localScale = new Vector3(width * 1.5f, this.borderWidth * 10, this.borderWidth);
+		this.destroyerBorder.transform.SetParent(this.transform);
 
 		this.player.transform.SetParent(this.transform);
 	}
