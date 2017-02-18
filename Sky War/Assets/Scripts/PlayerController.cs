@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 			v.x = speed;
 
 			if (this.rotate < this.maxRotate) {
-				this.transform.Rotate(new Vector3(0, -5f, 0));
+				this.transform.Rotate(new Vector3(0, 0, -5f));
 				this.rotate += 1;
 			}
 
@@ -44,18 +44,18 @@ public class PlayerController : MonoBehaviour {
 			v.x = -speed;
 
 			if (this.rotate > -this.maxRotate) {
-				this.transform.Rotate(new Vector3(0, 5f, 0));
+				this.transform.Rotate(new Vector3(0, 0, 5f));
 				this.rotate -= 1;
 			}
 		}
 		else {
 			v.x = 0;
 			if (this.rotate < 0) {
-				this.transform.Rotate (new Vector3 (0, -5f, 0));
+				this.transform.Rotate (new Vector3 (0, 0, -5f));
 				this.rotate += 1;
 			}
 			else if (this.rotate > 0) {
-				this.transform.Rotate (new Vector3 (0, 5f, 0));
+				this.transform.Rotate (new Vector3 (0, 0, 5f));
 				this.rotate -= 1;
 			}
 		}

@@ -15,7 +15,7 @@ public class DamageController : MonoBehaviour {
 	protected GameObject healthBar;
 	protected float healthBarVisibilityTime = 0f;
 	protected float healthBarMaxVisibilityTime = 2f;
-
+	protected Quaternion helthBarOriginalRotation;
 	protected BoxCollider col;
 
 	void Start () {
@@ -35,6 +35,7 @@ public class DamageController : MonoBehaviour {
 			new Quaternion()
 		);
 		this.healthBar.transform.rotation = gob.HealthBar.transform.rotation;
+		this.helthBarOriginalRotation = this.healthBar.transform.rotation;
 		this.healthBar.transform.SetParent (this.transform);
 		this.healthBar.name = this.transform.name + "_" + gob.HealthBar.name;
 		this.healthBarVisibilityTime = 0f;
@@ -43,10 +44,13 @@ public class DamageController : MonoBehaviour {
 
 	void Update(){
 		col.center = new Vector3(0, (colliderHeight - this.transform.position.y)/(col.bounds.size.y/1), 0);
+		this.healthBar.transform.rotation = this.helthBarOriginalRotation;
 	}
 
 	void OnTriggerEnter(Collider other) {
-		
+
+
+
 		if (other.tag == this.projectileTag) {
 			
 			Projectile p = other.gameObject.GetComponent<Projectile> ();
