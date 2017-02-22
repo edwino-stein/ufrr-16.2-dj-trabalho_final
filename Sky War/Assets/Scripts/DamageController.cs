@@ -43,7 +43,7 @@ public class DamageController : MonoBehaviour {
 	}
 
 	void Update(){
-		col.center = new Vector3(0, (colliderHeight - this.transform.position.y)/(col.bounds.size.y/1), 0);
+		col.center = new Vector3(0, colliderHeight - this.transform.position.y, 0);
 		this.healthBar.transform.rotation = this.helthBarOriginalRotation;
 	}
 
