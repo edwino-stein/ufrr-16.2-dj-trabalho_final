@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreForKill: 1
   lookAtPlayer: 1
-  allowAttack: 1
+  allowAttack: 0
 --- !u!1 &178440254
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1897651392}
-  moviment: 1
+  moviment: 0
   speed: 1
   borderWidth: 10
   border: {fileID: 1024432167}
