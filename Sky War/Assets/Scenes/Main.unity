@@ -128,13 +128,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4761141037055032, guid: 919d1f49647875248b52708e8f76c804, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114959907502468352, guid: 919d1f49647875248b52708e8f76c804,
         type: 2}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1897651392}
+      objectReference: {fileID: 0}
     - target: {fileID: 114306679503083842, guid: 919d1f49647875248b52708e8f76c804,
         type: 2}
       propertyPath: target
@@ -151,9 +151,34 @@ Prefab:
       value: 
       objectReference: {fileID: 1106969486950838, guid: 9894d67f992f3034fab88c67c130c075,
         type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 114959907502468352, guid: 919d1f49647875248b52708e8f76c804,
+        type: 2}
+      propertyPath: freezeY
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114391576127715464, guid: 919d1f49647875248b52708e8f76c804, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 919d1f49647875248b52708e8f76c804, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &35001819 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1013608843450980, guid: 919d1f49647875248b52708e8f76c804,
+    type: 2}
+  m_PrefabInternal: {fileID: 18807082}
+--- !u!114 &35001824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 35001819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55238d39e3b5c5a49aa928f8af70540e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreForKill: 1
+  lookAtPlayer: 1
+  allowAttack: 1
 --- !u!1 &178440254
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +446,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &826234662
 MonoBehaviour:
@@ -435,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 1281814756070826, guid: 0ca1b150acc778842a248a4693d78ae9, type: 2}
+  Player: {fileID: 1897651392}
 --- !u!1 &1024432167
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +929,7 @@ Transform:
   - {fileID: 1398912926}
   - {fileID: 1881193050}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1897651394
 MonoBehaviour:

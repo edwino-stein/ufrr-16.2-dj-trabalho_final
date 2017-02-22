@@ -49,8 +49,6 @@ public class DamageController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 
-
-
 		if (other.tag == this.projectileTag) {
 			
 			Projectile p = other.gameObject.GetComponent<Projectile> ();
@@ -61,7 +59,15 @@ public class DamageController : MonoBehaviour {
 				this.updateHealthBar ();
 				Destroy(other.gameObject);
 
-				if (this.life <= 0) Destroy(this.subject);
+				if (this.life <= 0) {
+					
+					EnemyLifeCycle elc = this.GetComponent<EnemyLifeCycle> ();
+					if (elc) {
+						elc.gameObject.SendMessage("onSubjectDie", this.subject);
+					}
+
+					Destroy (this.subject);
+				}
 			}
 		}
 	}
