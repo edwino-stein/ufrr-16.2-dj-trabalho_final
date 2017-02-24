@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon : MonoBehaviour {
+public class Cannon2 : MonoBehaviour {
 
 	public GameObject projectile; 
 	public float timer = 1f;
 	public float delayToStart = 0f;
+	public float sequenceTimer = 0.5f;
+	public int sequenceShoots = 5;
 	public bool allowShoot = true;
 	public float posY;
+
+	protected int counter = 0;
 
 	protected Transform mainCamera;
 
@@ -28,6 +32,7 @@ public class Cannon : MonoBehaviour {
 		while(true){
 			
 			if (this.allowShoot) {
+				
 				GameObject p = Instantiate (
 					this.projectile,
 					this.transform.position,
@@ -36,9 +41,16 @@ public class Cannon : MonoBehaviour {
 
 				p.GetComponent<Projectile> ().setDirection (this.transform.forward);
 				p.transform.SetParent (this.mainCamera);
+				this.counter++;
 			}
 
-			yield return new WaitForSeconds (this.timer);
+			if (this.counter >= this.sequenceShoots) {
+				this.counter = 0;
+				yield return new WaitForSeconds (this.timer);
+			}
+			else {
+				yield return new WaitForSeconds (this.sequenceTimer);
+			}
 		}
 	}
 }

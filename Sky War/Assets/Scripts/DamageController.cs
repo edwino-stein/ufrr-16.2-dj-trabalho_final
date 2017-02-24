@@ -60,13 +60,14 @@ public class DamageController : MonoBehaviour {
 				Destroy(other.gameObject);
 
 				if (this.life <= 0) {
-					
-					EnemyLifeCycle elc = this.GetComponent<EnemyLifeCycle> ();
-					if (elc) {
-						elc.gameObject.SendMessage("onSubjectDie", this.subject);
-					}
 
-					Destroy (this.subject);
+					this.SendMessage ("onSubjectDie", this.gameObject);
+//					EnemyLifeCycle elc = this.GetComponent<EnemyLifeCycle> ();
+//					if (elc) {
+//						elc.gameObject.SendMessage("onSubjectDie", this.subject);
+//					}
+
+//					Destroy (this.subject);
 				}
 			}
 		}

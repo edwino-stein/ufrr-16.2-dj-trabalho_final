@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 135874308444120362}
   - component: {fileID: 114967308161496158}
   m_Layer: 0
-  m_Name: SimpleCannonProjectile
+  m_Name: BossMainCannonProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,8 +54,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1789553630405360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0263908, y: 2.0263908, z: 2.0263908}
+  m_LocalPosition: {x: -0.26, y: 0, z: -0.26}
+  m_LocalScale: {x: 1.514728, y: 1.5147272, z: 1.5147272}
   m_Children: []
   m_Father: {fileID: 4727942810070384}
   m_RootOrder: 0
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1855727892068854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.5, y: 0, z: -58.3}
+  m_LocalPosition: {x: -66.3, y: -6.2, z: -58.990368}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4684857855944738}
@@ -87,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ed0e6f7531b476743b9397ec7c1aa834, type: 2}
+  - {fileID: 2100000, guid: fce8993f1d79abd45b5ae07fd9c6488e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,10 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762ef7ab0dec02a4699c9c86e60df3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0.8
   baseSpeed: 1000
   target: Player
-  damage: 5
+  damage: 2
   castShadows: 0
 --- !u!122 &122294199752174306
 Halo:
@@ -152,7 +152,7 @@ Halo:
   m_Enabled: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4294941950
+    rgba: 4285098495
   m_Size: 2
 --- !u!135 &135874308444120362
 SphereCollider:

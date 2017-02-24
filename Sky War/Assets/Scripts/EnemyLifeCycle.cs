@@ -6,7 +6,6 @@ public class EnemyLifeCycle : MonoBehaviour {
 	
 	public int scoreForKill = 1;
 	public bool lookAtPlayer = true;
-	public bool allowAttack = true;
 
 	void Start () {
 
@@ -20,17 +19,23 @@ public class EnemyLifeCycle : MonoBehaviour {
 				lookAt.freezeY = true;
 			}
 		}
-
-		if (allowAttack) {
-			Transform c = this.transform.FindChild ("Cannon");
-			if (c) {
-				Cannon cannon = c.GetComponent<Cannon> ();
-				cannon.allowShoot = true;
-			}
-		}
 	}
 
-	public void onSubjectDie(GameObject subject){
-		Debug.Log (subject.name + " morreu: Ganhou "+this.scoreForKill+" Pontos");
+	public void onSubjectDie(GameObject target){
+
+		DamageController dc = target.GetComponent<DamageController> ();
+		if (dc == null) {
+			return;
+		}
+
+		GameObject subject = dc.subject;
+
+		if (subject.tag == "Enemy") {
+			Debug.Log (subject.name + " morreu: Ganhou " + this.scoreForKill + " Pontos");
+			Destroy (target);
+		} else if (subject.tag == "Boss") {
+			Debug.Log (target.name + " morreu: Ganhou " + this.scoreForKill + " Pontos");
+			subject.SendMessage ("onBossPieceDie", target);
+		}
 	}
 }
