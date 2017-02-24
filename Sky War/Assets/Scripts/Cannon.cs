@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour {
 
-	public GameObject projectile; 
+	public GameObject projectile;
 	public float timer = 1f;
 	public float delayToStart = 0f;
 	public bool allowShoot = true;
 	public float posY;
 
 	protected Transform mainCamera;
+	protected GameObject fx;
 
 	void Start () {
 		this.transform.position = new Vector3 (
@@ -20,6 +21,9 @@ public class Cannon : MonoBehaviour {
 		);
 
 		this.mainCamera = Camera.main.transform;
+		GameObjectBundle gob = GameObject.Find ("GameObjectBundle").GetComponent<GameObjectBundle> ();
+		this.fx = gob.ShootFire;
+
 		StartCoroutine("shoot");
 	}
 
@@ -28,6 +32,13 @@ public class Cannon : MonoBehaviour {
 		while(true){
 			
 			if (this.allowShoot) {
+
+				GameObject fx = Instantiate (
+					this.fx,
+					this.transform.position,
+					this.transform.parent.transform.rotation
+				);
+
 				GameObject p = Instantiate (
 					this.projectile,
 					this.transform.position,
@@ -36,6 +47,7 @@ public class Cannon : MonoBehaviour {
 
 				p.GetComponent<Projectile> ().setDirection (this.transform.forward);
 				p.transform.SetParent (this.mainCamera);
+				Destroy (fx, 0.8f);
 			}
 
 			yield return new WaitForSeconds (this.timer);

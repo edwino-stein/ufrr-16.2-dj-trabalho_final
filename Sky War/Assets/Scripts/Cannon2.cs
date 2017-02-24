@@ -13,6 +13,7 @@ public class Cannon2 : MonoBehaviour {
 	public float posY;
 
 	protected int counter = 0;
+	protected GameObject fx;
 
 	protected Transform mainCamera;
 
@@ -24,6 +25,9 @@ public class Cannon2 : MonoBehaviour {
 		);
 
 		this.mainCamera = Camera.main.transform;
+		GameObjectBundle gob = GameObject.Find ("GameObjectBundle").GetComponent<GameObjectBundle> ();
+		this.fx = gob.ShootFire;
+
 		StartCoroutine("shoot");
 	}
 
@@ -32,13 +36,20 @@ public class Cannon2 : MonoBehaviour {
 		while(true){
 			
 			if (this.allowShoot) {
-				
+
+				GameObject fx = Instantiate (
+					this.fx,
+					this.transform.position,
+					this.transform.parent.transform.rotation
+				);
+
 				GameObject p = Instantiate (
 					this.projectile,
 					this.transform.position,
 					this.transform.parent.transform.rotation
 				);
 
+				Destroy (fx, 0.8f);
 				p.GetComponent<Projectile> ().setDirection (this.transform.forward);
 				p.transform.SetParent (this.mainCamera);
 				this.counter++;

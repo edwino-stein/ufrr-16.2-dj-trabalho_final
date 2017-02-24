@@ -415,6 +415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 1281814756070826, guid: 0ca1b150acc778842a248a4693d78ae9, type: 2}
   Explosion: {fileID: 1998865247071018, guid: 1bffe3170122cdc4a82e2196fc928213, type: 2}
+  ShootFire: {fileID: 1964124145165330, guid: e780821438d816a40991666dafe7112d, type: 2}
+  HitFx: {fileID: 1046234461715176, guid: 6521bc4b68ec09748b52777cfc28ac1e, type: 2}
   Player: {fileID: 1897651392}
 --- !u!1 &1024432167
 GameObject:

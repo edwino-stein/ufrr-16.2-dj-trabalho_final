@@ -18,6 +18,8 @@ public class DamageController : MonoBehaviour {
 	protected Quaternion helthBarOriginalRotation;
 	protected BoxCollider col;
 
+	protected GameObject hitFx;
+
 	void Start () {
 
 		this.life = this.maxLife;
@@ -40,6 +42,8 @@ public class DamageController : MonoBehaviour {
 		this.healthBar.name = this.transform.name + "_" + gob.HealthBar.name;
 		this.healthBarVisibilityTime = 0f;
 		StartCoroutine("healthBarFade");
+
+		this.hitFx = gob.HitFx;
 	}
 
 	void Update(){
@@ -58,13 +62,19 @@ public class DamageController : MonoBehaviour {
 				if (this.life <= 0) {
 					return;
 				}
+					
+				GameObject fx = Instantiate (
+					this.hitFx,
+					other.transform.position,
+					other.transform.rotation
+				);
 
 				this.life -= p.damage;
 				this.updateHealthBar ();
+				Destroy (fx, 0.8f);
 				Destroy(other.gameObject);
 
 				if (this.life <= 0) {
-					Debug.Log ("Bunda");
 					this.SendMessage ("onSubjectDie", this.gameObject);
 				}
 			}
