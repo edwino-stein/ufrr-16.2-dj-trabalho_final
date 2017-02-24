@@ -54,20 +54,17 @@ public class DamageController : MonoBehaviour {
 			Projectile p = other.gameObject.GetComponent<Projectile> ();
 
 			if (p.target == this.tag) {
-				
+
+				if (this.life <= 0) {
+					return;
+				}
+
 				this.life -= p.damage;
 				this.updateHealthBar ();
 				Destroy(other.gameObject);
 
 				if (this.life <= 0) {
-
 					this.SendMessage ("onSubjectDie", this.gameObject);
-//					EnemyLifeCycle elc = this.GetComponent<EnemyLifeCycle> ();
-//					if (elc) {
-//						elc.gameObject.SendMessage("onSubjectDie", this.subject);
-//					}
-
-//					Destroy (this.subject);
 				}
 			}
 		}

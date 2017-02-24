@@ -7,6 +7,8 @@ public class EnemyLifeCycle : MonoBehaviour {
 	public int scoreForKill = 1;
 	public bool lookAtPlayer = true;
 
+	protected float explosionTime = 2f;
+
 	void Start () {
 
 		GameObjectBundle gob = GameObject.Find ("GameObjectBundle").GetComponent<GameObjectBundle> ();
@@ -32,10 +34,21 @@ public class EnemyLifeCycle : MonoBehaviour {
 
 		if (subject.tag == "Enemy") {
 			Debug.Log (subject.name + " morreu: Ganhou " + this.scoreForKill + " Pontos");
-			Destroy (target);
+			this.explode (subject.transform);
+			Destroy (target, this.explosionTime/4);
+
 		} else if (subject.tag == "Boss") {
 			Debug.Log (target.name + " morreu: Ganhou " + this.scoreForKill + " Pontos");
+			this.explode (target.transform);
+			Destroy (target, this.explosionTime/4);
 			subject.SendMessage ("onBossPieceDie", target);
 		}
+	}
+
+	public void explode(Transform subject){
+		GameObjectBundle gob = GameObject.Find ("GameObjectBundle").GetComponent<GameObjectBundle> ();
+		GameObject explosion = gob.Explosion;
+		GameObject e = Instantiate (explosion, subject.position, subject.rotation);
+		Destroy (e, this.explosionTime);
 	}
 }

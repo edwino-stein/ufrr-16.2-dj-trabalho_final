@@ -44,7 +44,6 @@ public class Boss : MonoBehaviour {
 	void onBossPieceDie(GameObject subject){
 		
 		Debug.Log ("Destruiu algo do boss");
-		Destroy (subject);
 		this.life--;
 
 		if (this.life == 3) {
