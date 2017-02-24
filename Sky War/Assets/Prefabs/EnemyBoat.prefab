@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114366911324269730}
   m_Layer: 0
   m_Name: EnemyBoat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1353500194111868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -116.2, y: -30, z: 44.3}
+  m_LocalPosition: {x: -55.87599, y: -25.712257, z: 41.779938}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4073384754692614}
@@ -316,7 +316,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreForKill: 100
   lookAtPlayer: 1
-  allowAttack: 1
 --- !u!114 &114806765733448706
 MonoBehaviour:
   m_ObjectHideFlags: 1

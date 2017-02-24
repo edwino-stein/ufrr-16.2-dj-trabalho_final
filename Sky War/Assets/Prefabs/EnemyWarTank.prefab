@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4497537843507824}
   - component: {fileID: 54768513163231904}
   - component: {fileID: 114765467499072214}
+  - component: {fileID: 114861094382220994}
   m_Layer: 0
   m_Name: EnemyWarTank
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -332,6 +333,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   baseSpeed: 1000
+--- !u!114 &114861094382220994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098522930015740}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55238d39e3b5c5a49aa928f8af70540e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreForKill: 150
+  lookAtPlayer: 0
 --- !u!114 &114874352811766236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,4 +359,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreForKill: 150
   lookAtPlayer: 1
-  allowAttack: 1

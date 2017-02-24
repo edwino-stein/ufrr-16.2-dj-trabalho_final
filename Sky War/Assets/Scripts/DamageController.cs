@@ -64,6 +64,7 @@ public class DamageController : MonoBehaviour {
 				Destroy(other.gameObject);
 
 				if (this.life <= 0) {
+					Debug.Log ("Bunda");
 					this.SendMessage ("onSubjectDie", this.gameObject);
 				}
 			}

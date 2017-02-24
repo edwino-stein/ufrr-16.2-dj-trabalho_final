@@ -35,7 +35,7 @@ public class EnemyLifeCycle : MonoBehaviour {
 		if (subject.tag == "Enemy") {
 			Debug.Log (subject.name + " morreu: Ganhou " + this.scoreForKill + " Pontos");
 			this.explode (subject.transform);
-			Destroy (target, this.explosionTime/4);
+			Destroy (subject, this.explosionTime/4);
 
 		} else if (subject.tag == "Boss") {
 			Debug.Log (target.name + " morreu: Ganhou " + this.scoreForKill + " Pontos");
