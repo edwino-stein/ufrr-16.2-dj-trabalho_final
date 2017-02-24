@@ -10,6 +10,7 @@ public class Cannon : MonoBehaviour {
 	public bool allowShoot = true;
 	public float posY;
 
+	public bool allowFx = true;
 	protected Transform mainCamera;
 	protected GameObject fx;
 
@@ -24,15 +25,21 @@ public class Cannon : MonoBehaviour {
 		GameObjectBundle gob = GameObject.Find ("GameObjectBundle").GetComponent<GameObjectBundle> ();
 		this.fx = gob.ShootFire;
 
-		StartCoroutine("shoot");
+		if (this.allowFx) {
+			StartCoroutine("shootFx");
+		}
+		else {
+			StartCoroutine("shoot");
+		}
+
 	}
 
-	IEnumerator shoot(){
+	IEnumerator shootFx(){
 		yield return new WaitForSeconds (this.delayToStart);
 		while(true){
 			
 			if (this.allowShoot) {
-
+				
 				GameObject fx = Instantiate (
 					this.fx,
 					this.transform.position,
@@ -47,7 +54,28 @@ public class Cannon : MonoBehaviour {
 
 				p.GetComponent<Projectile> ().setDirection (this.transform.forward);
 				p.transform.SetParent (this.mainCamera);
+
 				Destroy (fx, 0.8f);
+			}
+
+			yield return new WaitForSeconds (this.timer);
+		}
+	}
+
+	IEnumerator shoot(){
+		yield return new WaitForSeconds (this.delayToStart);
+		while(true){
+
+			if (this.allowShoot) {
+
+				GameObject p = Instantiate (
+					this.projectile,
+					this.transform.position,
+					this.transform.parent.transform.rotation
+				);
+
+				p.GetComponent<Projectile> ().setDirection (this.transform.forward);
+				p.transform.SetParent (this.mainCamera);
 			}
 
 			yield return new WaitForSeconds (this.timer);

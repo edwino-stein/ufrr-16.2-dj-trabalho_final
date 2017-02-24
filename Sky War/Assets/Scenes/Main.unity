@@ -804,7 +804,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4533049468826200, guid: 57270309863332b41a04c3e0bd23874a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 9.74
       objectReference: {fileID: 0}
     - target: {fileID: 4533049468826200, guid: 57270309863332b41a04c3e0bd23874a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -845,6 +845,11 @@ Prefab:
         type: 2}
       propertyPath: allowShoot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114806479467952980, guid: 57270309863332b41a04c3e0bd23874a,
+        type: 2}
+      propertyPath: allowFx
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57270309863332b41a04c3e0bd23874a, type: 2}
