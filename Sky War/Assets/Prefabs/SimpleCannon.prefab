@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031393165247098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -81.9, y: -22.6, z: 41.8}
+  m_LocalPosition: {x: 30.951618, y: -25.58161, z: 25.054296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4990107339881418}
@@ -200,10 +200,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1855727892068854, guid: f4597e42138b99743baaeaaaa2ded67c, type: 2}
-  timer: 2
-  delayToStart: 2
+  timer: 1.5
+  delayToStart: 3
   allowShoot: 1
   posY: 0
+  allowFx: 1
 --- !u!114 &114807089691453248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,7 +216,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55238d39e3b5c5a49aa928f8af70540e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObjName: Player
-  scoreForKill: 10
+  scoreForKill: 50
   lookAtPlayer: 1
-  allowAttack: 1

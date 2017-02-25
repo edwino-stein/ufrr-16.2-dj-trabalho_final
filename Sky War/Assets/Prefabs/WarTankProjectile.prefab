@@ -150,10 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762ef7ab0dec02a4699c9c86e60df3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   baseSpeed: 1000
   target: Player
-  damage: 10
+  damage: 5
   castShadows: 0
 --- !u!122 &122046111874487946
 Halo:

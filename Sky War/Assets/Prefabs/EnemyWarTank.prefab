@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098522930015740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -98.2, y: -26.27, z: 47.6}
+  m_LocalPosition: {x: 40.719765, y: -28.325298, z: 123.6108}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4154860890716254}
@@ -285,10 +285,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1106969486950838, guid: aad8aa3505f698f4bbef761aaae5c603, type: 2}
-  timer: 3
-  delayToStart: 2
+  timer: 2.5
+  delayToStart: 3
   allowShoot: 1
   posY: 0
+  allowFx: 1
 --- !u!114 &114620869742169812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subject: {fileID: 1098522930015740}
   projectileTag: Projectile
-  maxLife: 150
+  maxLife: 75
   colliderHeight: 0
   healthBarPos: {x: 0, y: -7.5}
 --- !u!114 &114765467499072214
@@ -344,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55238d39e3b5c5a49aa928f8af70540e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreForKill: 150
+  scoreForKill: 100
   lookAtPlayer: 0
 --- !u!114 &114874352811766236
 MonoBehaviour:
@@ -357,5 +358,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55238d39e3b5c5a49aa928f8af70540e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreForKill: 150
+  scoreForKill: 100
   lookAtPlayer: 1
