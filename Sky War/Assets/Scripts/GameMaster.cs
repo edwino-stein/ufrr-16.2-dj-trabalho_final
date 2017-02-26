@@ -42,6 +42,12 @@ public class GameMaster : MonoBehaviour {
 		this.multiplier = 1;
 	}
 
+	public IEnumerator onBossDie(){
+		Debug.Log ("O Boss Morreu");
+		yield return new WaitForSeconds (10);
+		Debug.Log ("Fim de jogo");
+	}
+
 	void OnGUI(){
 		GUI.skin = this.scoreSkin;
 		GUI.Label (new Rect (Screen.width/2 - 75, 10, 150, 25), "Score: "+this.score);

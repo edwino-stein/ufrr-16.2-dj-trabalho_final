@@ -18,8 +18,15 @@ public class CameraController : MonoBehaviour {
 	protected GameObject leftBorder;
 	protected GameObject bottomBorder;
 
-	void Start(){
+	public Vector2 InitialPos;
 
+	public GameObject bossSenaryTaling;
+	protected bool enableBossSenaryTaling = false;
+	protected float sizeBossSenaryTaling = 500;
+	protected float nextPosBossSenaryTaling = 0;
+	protected float bossSenaryTalingY = -1;
+	void Start(){
+		
 		float y = Camera.main.orthographicSize;
 		float x = y * Screen.width / Screen.height;
 		float width = (x + this.borderWidth) * 2;
@@ -55,13 +62,43 @@ public class CameraController : MonoBehaviour {
 		this.destroyerBorder.transform.SetParent(this.transform);
 
 		this.player.transform.SetParent(this.transform);
+
+		this.transform.position = new Vector3(
+			this.InitialPos.x,
+			this.transform.position.y,
+			this.InitialPos.y
+		);
 	}
 
 	void Update () {
+		Vector3 position = this.transform.position;
+
 		if (moviment) {
-			Vector3 position = this.transform.position;
 			position.z += speed;
 			this.transform.position = position;
 		}
+
+		if (this.enableBossSenaryTaling) {
+			if (this.nextPosBossSenaryTaling <= position.z + 50) {
+				Debug.Log ("BossSenaryTaling");
+				Instantiate (
+					this.bossSenaryTaling,
+					new Vector3 (
+						this.bossSenaryTaling.transform.position.x,
+						this.bossSenaryTaling.transform.position.y + this.bossSenaryTalingY,
+						this.nextPosBossSenaryTaling + this.sizeBossSenaryTaling*1.3f
+					),
+					this.bossSenaryTaling.transform.rotation
+				);
+
+				this.nextPosBossSenaryTaling = this.transform.position.z + this.sizeBossSenaryTaling*1.3f;
+				this.bossSenaryTalingY = this.bossSenaryTalingY > 0 ? -1 : 1;
+			}
+		}
+	}
+
+	void onBossSpawn(){
+		this.enableBossSenaryTaling = true;
+		this.nextPosBossSenaryTaling = this.transform.position.z + this.sizeBossSenaryTaling;
 	}
 }

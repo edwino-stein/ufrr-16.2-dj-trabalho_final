@@ -35,13 +35,18 @@ public class EnemyLifeCycle : MonoBehaviour {
 
 		if (subject.tag == "Enemy") {
 			Debug.Log (subject.name + " morreu: Ganhou " + this.scoreForKill + " Pontos");
-			this.gm.SendMessage ("updateScore", this.scoreForKill);
 			this.gm.SendMessage ("incrementCombo");
+			this.gm.SendMessage ("updateScore", this.scoreForKill);
 			this.explode (subject.transform);
 			Destroy (subject, this.explosionTime/4);
 
 		} else if (subject.tag == "Boss") {
+			
 			Debug.Log (target.name + " morreu: Ganhou " + this.scoreForKill + " Pontos");
+
+			this.gm.SendMessage ("incrementCombo");
+			this.gm.SendMessage ("updateScore", this.scoreForKill);
+
 			this.explode (target.transform);
 			Destroy (target, this.explosionTime/4);
 			subject.SendMessage ("onBossPieceDie", target);
