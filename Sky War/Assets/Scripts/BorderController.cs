@@ -9,6 +9,11 @@ public class BorderController : MonoBehaviour {
 
 	public bool initSpawners = false;
 	public bool destroyObjects = false;
+	protected GameObject gm;
+
+	void Start(){
+		this.gm = GameObject.Find ("GameMaster");
+	}
 
 	void OnTriggerEnter(Collider other) {
 		
@@ -23,6 +28,12 @@ public class BorderController : MonoBehaviour {
 		}
 
 		if (this.destroyObjects) {
+
+			if (other.tag == "Enemy") {
+				Debug.Log ("Inimigo escapou");
+				this.gm.SendMessage ("resetCombo");
+			}
+
 			Destroy(other.gameObject);
 			return;
 		}

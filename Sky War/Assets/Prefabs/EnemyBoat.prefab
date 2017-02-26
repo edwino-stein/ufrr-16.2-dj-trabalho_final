@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 23960064169895912}
   m_Layer: 0
   m_Name: Boat01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 23354923954549432}
   m_Layer: 0
   m_Name: SimpleCannon_Mesh
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1353500194111868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.558437, y: -28.997513, z: 27.724842}
+  m_LocalPosition: {x: -10.240116, y: -30.110294, z: 64.77733}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4073384754692614}

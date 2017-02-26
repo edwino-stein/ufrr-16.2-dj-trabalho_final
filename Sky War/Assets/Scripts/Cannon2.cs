@@ -25,7 +25,7 @@ public class Cannon2 : MonoBehaviour {
 		);
 
 		this.mainCamera = Camera.main.transform;
-		GameObjectBundle gob = GameObject.Find ("GameObjectBundle").GetComponent<GameObjectBundle> ();
+		GameObjectBundle gob = GameObject.Find ("GameMaster").GetComponent<GameObjectBundle> ();
 		this.fx = gob.ShootFire;
 
 		StartCoroutine("shoot");

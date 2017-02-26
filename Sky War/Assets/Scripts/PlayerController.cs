@@ -13,9 +13,11 @@ public class PlayerController : MonoBehaviour {
 	protected Rigidbody rb;
 	protected float maxRotate = 5f;
 	protected float rotate = 0f;
+	protected GameObject gm;
 
 	void Start () {
 		this.rb = GetComponent<Rigidbody> ();
+		this.gm = GameObject.Find ("GameMaster");
 	}
 
 	void Update () {
@@ -61,5 +63,14 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		this.rb.velocity = v;
+	}
+
+	public void onSubjectDie(GameObject target){
+		Debug.Log ("player morreu");
+	}
+
+	public void onSubjectTakeDamage(float damage){
+		Debug.Log ("Player Tomou dano");
+		this.gm.SendMessage ("resetCombo");
 	}
 }

@@ -24,7 +24,7 @@ public class DamageController : MonoBehaviour {
 
 		this.life = this.maxLife;
 
-		GameObjectBundle gob = GameObject.Find ("GameObjectBundle").GetComponent<GameObjectBundle> ();
+		GameObjectBundle gob = GameObject.Find ("GameMaster").GetComponent<GameObjectBundle> ();
 		this.col = (BoxCollider) this.GetComponent<Collider>();
 
 		this.healthBar = Instantiate (
@@ -73,6 +73,8 @@ public class DamageController : MonoBehaviour {
 				this.updateHealthBar ();
 				Destroy (fx, 0.8f);
 				Destroy(other.gameObject);
+
+				this.SendMessage ("onSubjectTakeDamage",  p.damage);
 
 				if (this.life <= 0) {
 					this.SendMessage ("onSubjectDie", this.gameObject);
