@@ -23,6 +23,8 @@ public class GameMaster : MonoBehaviour {
 
 	void Start () {
 		GameMaster.gameState = GameMaster.GAME_RUNNIG;
+		GameMaster.playerScore = 0;
+		this.score = 0;
 	}
 
 	void updateScore(int score){
@@ -61,6 +63,7 @@ public class GameMaster : MonoBehaviour {
 		Debug.Log ("player morreu");
 
 		GameMaster.gameState = GAME_GAMEOVER;
+		GameMaster.playerScore = this.score;
 		GameObject player = GameObject.Find ("Player");
 		Destroy (player, 2f);
 		yield return new WaitForSeconds (4f);
