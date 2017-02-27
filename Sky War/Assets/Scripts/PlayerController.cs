@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 		if (this.isDie) {
+			this.rb.velocity = Vector3.zero;
 			return;
 		}
 
@@ -80,12 +81,12 @@ public class PlayerController : MonoBehaviour {
 				Random.Range (-5f, 5f),
 				Random.Range (-5f, 5f)
 			));
-
+				
 			c.speed /= 2;
 			delay = Random.Range (0.5f, 0.7f);
 			yield return new WaitForSeconds (delay);
 		}
-
+			
 		c.speed = 0;
 	}
 
