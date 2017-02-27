@@ -19,6 +19,8 @@ public class GameMaster : MonoBehaviour {
 	protected int combo = 0;
 	protected int multiplier = 1;
 
+	protected bool isPaused = false;
+
 	void Start () {
 		GameMaster.gameState = GameMaster.GAME_RUNNIG;
 	}
@@ -69,10 +71,26 @@ public class GameMaster : MonoBehaviour {
 
 	void OnGUI(){
 		GUI.skin = this.scoreSkin;
+
+		if (this.isPaused) {
+			GUI.Label (new Rect (Screen.width/2 - 75, Screen.height/2 - 12.5f, 150, 25), "Pause");
+			if (GUI.Button (new Rect (Screen.width/2 - 75, Screen.height/2 + 40, 150, 40), "Reinicar")) {
+				Application.LoadLevel (Application.loadedLevel);
+			}
+		}
+
 		GUI.Label (new Rect (Screen.width/2 - 75, 10, 150, 25), "Score: "+this.score);
 
 		GUI.skin = this.comboSkin;
 		GUI.Label (new Rect (Screen.width - 160, 10, 150, 25), "Combo: "+this.combo);
 		GUI.Label (new Rect (Screen.width - 160, 25, 150, 25), "x"+this.multiplier);
+	}
+
+	void setPause(bool pause){
+		this.isPaused = pause;
+		GameObject boss = GameObject.FindWithTag ("Boss");
+		if (boss) {
+			boss.SendMessage ("setPause", pause);
+		}
 	}
 }

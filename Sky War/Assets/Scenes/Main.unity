@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44858867, g: 0.4986381, b: 0.5756632, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4192,6 +4192,8 @@ MonoBehaviour:
   downKey: 115
   leftKey: 97
   rightKey: 100
+  pauseKey1: 32
+  pauseKey2: 27
   speed: 80
 --- !u!65 &1897651395
 BoxCollider:

@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour {
 	protected int slowingDownTimer;
 	protected GameObject gm;
 
-//	protected bool isDying = false;
+	protected bool isPaused = false;
 
 	void Start(){
 		this.rb = this.GetComponent<Rigidbody> ();
@@ -28,9 +28,11 @@ public class Boss : MonoBehaviour {
 	}
 
 	void Update () {
-		Vector3 position = this.transform.position;
-		position.z += this.speed;
-		this.transform.position = position;
+		if (!this.isPaused) {
+			Vector3 position = this.transform.position;
+			position.z += this.speed;
+			this.transform.position = position;
+		}
 	}
 
 	void slowDown(int timer){
@@ -87,5 +89,9 @@ public class Boss : MonoBehaviour {
 			this.transform.rotation
 		);
 		Destroy (e, 2f);
+	}
+
+	void setPause(bool pause){
+		this.isPaused = pause;
 	}
 }

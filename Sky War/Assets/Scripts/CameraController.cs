@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour {
 	protected GameObject leftBorder;
 	protected GameObject bottomBorder;
 
+	protected Rigidbody rb;
+
 	public Vector2 InitialPos;
 
 	public GameObject bossSenaryTaling;
@@ -25,8 +27,11 @@ public class CameraController : MonoBehaviour {
 	protected float sizeBossSenaryTaling = 500;
 	protected float nextPosBossSenaryTaling = 0;
 	protected float bossSenaryTalingY = -1;
+
 	void Start(){
-		
+
+		this.rb = this.GetComponent<Rigidbody> ();
+
 		float y = Camera.main.orthographicSize;
 		float x = y * Screen.width / Screen.height;
 		float width = (x + this.borderWidth) * 2;
@@ -71,15 +76,13 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void Update () {
+		
 		Vector3 position = this.transform.position;
-
-		if (moviment) {
-			position.z += speed;
-			this.transform.position = position;
-		}
+		position.z += moviment ? speed : 0;
+		this.transform.position = position;
 
 		if (this.enableBossSenaryTaling) {
-			if (this.nextPosBossSenaryTaling <= position.z + 50) {
+			if (this.nextPosBossSenaryTaling <= this.transform.position.z + 50) {
 				Debug.Log ("BossSenaryTaling");
 				Instantiate (
 					this.bossSenaryTaling,
@@ -101,4 +104,17 @@ public class CameraController : MonoBehaviour {
 		this.enableBossSenaryTaling = true;
 		this.nextPosBossSenaryTaling = this.transform.position.z + this.sizeBossSenaryTaling;
 	}
+
+	void setPause(bool pause){
+		this.moviment = !pause;
+	}
+
+//	public void pause(){
+//		this.moviment = false;
+//	}
+//
+//	public void unpause(){
+//		this.moviment = true;
+//	}
+
 }

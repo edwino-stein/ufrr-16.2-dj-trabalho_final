@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode downKey;
 	public KeyCode leftKey;
 	public KeyCode rightKey;
+	public KeyCode pauseKey1;
+	public KeyCode pauseKey2;
 
 	public float speed = 1f;
 	protected Rigidbody rb;
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	protected float rotate = 0f;
 	protected GameObject gm;
 	protected bool isDie = false;
+	protected bool paused = false;
 
 	void Start () {
 		this.rb = GetComponent<Rigidbody> ();
@@ -26,6 +29,21 @@ public class PlayerController : MonoBehaviour {
 		if (this.isDie) {
 			this.rb.velocity = Vector3.zero;
 			return;
+		}
+
+		if (Input.GetKeyDown (this.pauseKey1) || Input.GetKeyDown (this.pauseKey2)) {
+			this.paused = !this.paused;
+		}
+
+		if (this.paused) {
+			Time.timeScale = 0;
+			Camera.main.SendMessage ("setPause", true);
+			this.gm.SendMessage ("setPause", true);
+			return;
+		} else {
+			Time.timeScale = 1;
+			Camera.main.SendMessage ("setPause", false);
+			this.gm.SendMessage ("setPause", false);
 		}
 
 		Vector3 v = this.rb.velocity;
