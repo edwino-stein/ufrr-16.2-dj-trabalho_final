@@ -1056,7 +1056,7 @@ MonoBehaviour:
   border: {fileID: 1024432167}
   starterBorder: {fileID: 1191999404}
   destroyerBorder: {fileID: 1107977998}
-  InitialPos: {x: 0, y: 0}
+  InitialPos: {x: 0, y: 3800}
   bossSenaryTaling: {fileID: 546014387}
 --- !u!1001 &323540090
 Prefab:
@@ -2093,6 +2093,7 @@ GameObject:
   - component: {fileID: 826234661}
   - component: {fileID: 826234663}
   - component: {fileID: 826234662}
+  - component: {fileID: 826234664}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -2142,6 +2143,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreSkin: {fileID: 11400000, guid: 1d7a85499366b9248ae3e2009f888903, type: 2}
   comboSkin: {fileID: 11400000, guid: 5692affc9a7b1d04dafac2616acd86f7, type: 2}
+--- !u!114 &826234664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 826234660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4aaf6fab769a7498ca313436ff052a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startOnLevelWasLoaded: 1
+  texture: {fileID: 2800000, guid: a8a359a9c4f51984895834d7ef488702, type: 3}
+  speed: 0.34
 --- !u!1001 &833626254
 Prefab:
   m_ObjectHideFlags: 0

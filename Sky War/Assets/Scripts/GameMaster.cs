@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour {
 
+	public const int GAME_BEGIN = 0;
+	public const int GAME_RUNNIG = 1;
+	public const int GAME_GAMEOVER = 2;
+	public const int GAME_END = 3;
+
+	public static int gameState = 0;
+
 	public GUISkin scoreSkin;
 	public GUISkin comboSkin;
 
@@ -13,7 +20,7 @@ public class GameMaster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		GameMaster.gameState = GameMaster.GAME_RUNNIG;
 	}
 	
 	// Update is called once per frame
@@ -46,6 +53,7 @@ public class GameMaster : MonoBehaviour {
 		Debug.Log ("O Boss Morreu");
 		yield return new WaitForSeconds (10);
 		Debug.Log ("Fim de jogo");
+		GameMaster.gameState = GameMaster.GAME_END;
 	}
 
 	void OnGUI(){
