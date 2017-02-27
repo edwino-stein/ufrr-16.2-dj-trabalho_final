@@ -10,6 +10,7 @@ public class GameMaster : MonoBehaviour {
 	public const int GAME_END = 3;
 
 	public static int gameState = 0;
+	public static int playerScore = 0;
 
 	public GUISkin scoreSkin;
 	public GUISkin comboSkin;
@@ -18,14 +19,8 @@ public class GameMaster : MonoBehaviour {
 	protected int combo = 0;
 	protected int multiplier = 1;
 
-	// Use this for initialization
 	void Start () {
 		GameMaster.gameState = GameMaster.GAME_RUNNIG;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	void updateScore(int score){
@@ -54,6 +49,10 @@ public class GameMaster : MonoBehaviour {
 		yield return new WaitForSeconds (10);
 		Debug.Log ("Fim de jogo");
 		GameMaster.gameState = GameMaster.GAME_END;
+		GameMaster.playerScore = this.score;
+		float t = this.GetComponent<Fade> ().startFade (1);
+		yield return new WaitForSeconds (t);
+		Application.LoadLevel ("Menu");
 	}
 
 	void OnGUI(){
