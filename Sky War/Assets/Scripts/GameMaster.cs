@@ -11,6 +11,7 @@ public class GameMaster : MonoBehaviour {
 
 	public static int gameState = 0;
 	public static int playerScore = 0;
+	public static int hiScore = 0;
 
 	public GUISkin scoreSkin;
 	public GUISkin comboSkin;
@@ -24,11 +25,17 @@ public class GameMaster : MonoBehaviour {
 	void Start () {
 		GameMaster.gameState = GameMaster.GAME_RUNNIG;
 		GameMaster.playerScore = 0;
+		GameMaster.hiScore = this.getHiScore ();
 		this.score = 0;
 	}
 
 	void updateScore(int score){
 		this.score += score * this.multiplier;
+
+		if (this.score > GameMaster.hiScore) {
+			GameMaster.hiScore = this.score;
+		}
+
 		Debug.Log (this.score);
 	}
 
@@ -54,6 +61,7 @@ public class GameMaster : MonoBehaviour {
 		Debug.Log ("Fim de jogo");
 		GameMaster.gameState = GameMaster.GAME_END;
 		GameMaster.playerScore = this.score;
+		this.setHiScore (GameMaster.hiScore);
 		float t = this.GetComponent<Fade> ().startFade (1);
 		yield return new WaitForSeconds (t);
 		Application.LoadLevel ("Menu");
@@ -64,6 +72,7 @@ public class GameMaster : MonoBehaviour {
 
 		GameMaster.gameState = GAME_GAMEOVER;
 		GameMaster.playerScore = this.score;
+		this.setHiScore (GameMaster.hiScore);
 		GameObject player = GameObject.Find ("Player");
 		Destroy (player, 2f);
 		yield return new WaitForSeconds (4f);
@@ -82,7 +91,8 @@ public class GameMaster : MonoBehaviour {
 			}
 		}
 
-		GUI.Label (new Rect (Screen.width/2 - 75, 10, 150, 25), "Score: "+this.score);
+		GUI.Label (new Rect (Screen.width/2 - 75, 10, 150, 25), "Score: " + this.score);
+		GUI.Label (new Rect (Screen.width/2 - 75, 10, 150, 60), "Recorde: " + GameMaster.hiScore);
 
 		GUI.skin = this.comboSkin;
 		GUI.Label (new Rect (Screen.width - 160, 10, 150, 25), "Combo: "+this.combo);
@@ -95,5 +105,19 @@ public class GameMaster : MonoBehaviour {
 		if (boss) {
 			boss.SendMessage ("setPause", pause);
 		}
+	}
+
+	void setHiScore(int hi){
+		PlayerPrefs.SetInt ("HiScore", hi);
+		PlayerPrefs.Save ();
+	}
+
+	int getHiScore(){
+		
+		if (!PlayerPrefs.HasKey ("HiScore")) {
+			this.setHiScore (0);
+		}
+
+		return PlayerPrefs.GetInt ("HiScore");
 	}
 }
