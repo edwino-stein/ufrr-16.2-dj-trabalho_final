@@ -34,6 +34,19 @@ public class Menu : MonoBehaviour {
 			GUI.skin = this.titleSkin;
 			GUI.Label (new Rect (Screen.width - 275, Screen.height/2 - 10, 150, 50), ""+GameMaster.playerScore);
 		}
+
+		if (GameMaster.gameState == GameMaster.GAME_GAMEOVER) {
+			GUI.Box (new Rect (Screen.width - 325, Screen.height/2 - 50, 250, 100), "");
+			GUI.Label (new Rect (Screen.width - 275, Screen.height/2 - 50, 150, 50), "Game Over!");
+
+
+			if (GUI.Button (new Rect (Screen.width - 275, Screen.height/2 + 70, 150, 40), "Reinicar")) {
+				StartCoroutine("startMainLevel");
+			}
+
+			GUI.skin = this.titleSkin;
+			GUI.Label (new Rect (Screen.width - 275, Screen.height/2 - 10, 150, 50), ""+GameMaster.playerScore);
+		}
 	}
 
 	IEnumerator startMainLevel(){

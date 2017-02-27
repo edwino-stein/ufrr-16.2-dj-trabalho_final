@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 	protected float maxRotate = 5f;
 	protected float rotate = 0f;
 	protected GameObject gm;
+	protected bool isDie = false;
 
 	void Start () {
 		this.rb = GetComponent<Rigidbody> ();
@@ -21,7 +22,11 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		
+
+		if (this.isDie) {
+			return;
+		}
+
 		Vector3 v = this.rb.velocity;
 
 		if (Input.GetKey (this.upKey)) {
@@ -65,12 +70,51 @@ public class PlayerController : MonoBehaviour {
 		this.rb.velocity = v;
 	}
 
+	IEnumerator dying(){
+		CameraController c = Camera.main.GetComponent<CameraController> ();
+		this.rb.useGravity = true;
+		int explosions = 5;
+		float delay = 0f;
+		for (int i = 0; i < explosions; i++) {
+			this.explode (new Vector2 (
+				Random.Range (-5f, 5f),
+				Random.Range (-5f, 5f)
+			));
+
+			c.speed /= 2;
+			delay = Random.Range (0.5f, 0.7f);
+			yield return new WaitForSeconds (delay);
+		}
+
+		c.speed = 0;
+	}
+
 	public void onSubjectDie(GameObject target){
-		Debug.Log ("player morreu");
+		this.isDie = true;
+		StartCoroutine("dying");
+		this.gm.SendMessage ("onPlayerDie");
 	}
 
 	public void onSubjectTakeDamage(float damage){
 		Debug.Log ("Player Tomou dano");
 		this.gm.SendMessage ("resetCombo");
 	}
+
+	public void explode(Vector2 pos){
+		GameObjectBundle gob = this.gm.GetComponent<GameObjectBundle> ();
+		GameObject explosion = gob.Explosion;
+		Vector3 t = this.transform.TransformPoint (Vector3.zero);
+
+		GameObject e = Instantiate (
+			explosion,
+			new Vector3(
+				t.x + pos.x,
+				t.y,
+				t.z + pos.y
+			),
+			this.transform.rotation
+		);
+		Destroy (e, 2f);
+	}
+
 }

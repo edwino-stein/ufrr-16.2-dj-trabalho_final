@@ -55,6 +55,18 @@ public class GameMaster : MonoBehaviour {
 		Application.LoadLevel ("Menu");
 	}
 
+	public IEnumerator onPlayerDie(){
+		Debug.Log ("player morreu");
+
+		GameMaster.gameState = GAME_GAMEOVER;
+		GameObject player = GameObject.Find ("Player");
+		Destroy (player, 2f);
+		yield return new WaitForSeconds (4f);
+		float t = this.GetComponent<Fade> ().startFade (1);
+		yield return new WaitForSeconds (t);
+		Application.LoadLevel ("Menu");
+	}
+
 	void OnGUI(){
 		GUI.skin = this.scoreSkin;
 		GUI.Label (new Rect (Screen.width/2 - 75, 10, 150, 25), "Score: "+this.score);

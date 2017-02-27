@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 1296610226}
   - component: {fileID: 1296610225}
   - component: {fileID: 1296610227}
+  - component: {fileID: 1296610228}
   m_Layer: 0
   m_Name: MenuSene
   m_TagString: Untagged
@@ -631,7 +632,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skin: {fileID: 11400000, guid: 694975675afd3fc4bb95295c4e465716, type: 2}
   titleSkin: {fileID: 11400000, guid: bfd4bd213b3716e4ca49ec518363c80a, type: 2}
-  f: {fileID: 0}
+--- !u!114 &1296610228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1296610224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4aaf6fab769a7498ca313436ff052a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startOnLevelWasLoaded: 0
+  texture: {fileID: 2800000, guid: a8a359a9c4f51984895834d7ef488702, type: 3}
+  speed: 0.3
 --- !u!1 &1792349737
 GameObject:
   m_ObjectHideFlags: 0
