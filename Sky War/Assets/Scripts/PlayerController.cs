@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour {
 			Time.timeScale = 0;
 			Camera.main.SendMessage ("setPause", true);
 			this.gm.SendMessage ("setPause", true);
+			this.rb.velocity = Vector3.zero;
 			return;
 		} else {
 			Time.timeScale = 1;
